@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var router = express.Router();
 
-// mongoose.connect('mongodb://insecureUserName:unsecuredPassword@ds017070.mlab.com:17070/cs-498rk-mp4-back');
+mongoose.connect('mongodb://habit:formers498@ds013221.mlab.com:13221/habit-formers');
 
 // Create our Express application
 var app = express();
