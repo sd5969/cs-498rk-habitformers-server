@@ -6,6 +6,12 @@ var Habit = require('./models/habit');
 var bodyParser = require('body-parser');
 var router = express.Router();
 
+//adding passport stuff
+var passport = require('passport');
+var passportLocal = require('passport-local')
+var cookieParser = require('cookie-parser');
+var expressSession = require('express-session');
+
 mongoose.connect('mongodb://habit:formers498@ds013221.mlab.com:13221/habit-formers');
 
 // Create our Express application
@@ -38,7 +44,7 @@ app.use(bodyParser.json());
 // app.use(express.methodOverride());
 
 // ## CORS middleware
-// 
+//
 // see: http://stackoverflow.com/questions/7067966/how-to-allow-cors-in-express-nodejs
 var allowCrossDomain = function(req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');
@@ -54,7 +60,10 @@ else {
 }
 };
 app.use(allowCrossDomain);
-
+//User auth stuff will clean up later
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 // All our routes will start with /api
 app.use('/api', router);
 
@@ -63,7 +72,7 @@ var usersRoute = router.route('/users');
 var userRoute = router.route('/users/:id');
 var habitsRoute = router.route('/habits');
 var habitRoute = router.route('/habits/:id');
- 
+var login = router.route('/login');
 homeRoute.get(function(req, res) {
 	res.status(404).json({
 		message : 'Nothing here. Go to ./users or ./habits to play with the API.',
