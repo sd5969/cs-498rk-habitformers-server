@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 var HabitSchema = new mongoose.Schema({
     userId: mongoose.Schema.Types.ObjectId,
-    name: String,
+    name: {type: String, required: [true, 'You must enter a name']},
     repeat: {
         option: Number,
         days: [Number],

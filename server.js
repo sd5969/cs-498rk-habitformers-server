@@ -71,5 +71,20 @@ homeRoute.get(function(req, res) {
 	});
 });
 
+
+usersRoute.get(function(req, res) {
+	var query = User.find({});
+	query.exec(function(err, users) {
+		if(err) {
+			res.status(500).json({"message" : '' + err, "data" : []});
+			return;
+		}
+		else {
+			res.json({"message" : "OK", "data" : users});
+			return;
+		}
+	});
+});
+
 app.listen(port);
 console.log('Server running on port ' + port);

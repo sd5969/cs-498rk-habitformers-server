@@ -2,10 +2,10 @@
 var mongoose = require('mongoose');
 
 var UserSchema = new mongoose.Schema({
-    name: String,
+    name: {type: String, required: [true, 'You must enter a name']},
+	email: {type: String, required: [true, 'You must enter an email'], unique: true},
     password: String,
     phone: String,
-    email: String,
     settings: {
         start_day: Number
     }
