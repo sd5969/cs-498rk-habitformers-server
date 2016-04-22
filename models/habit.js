@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 
 var HabitSchema = new mongoose.Schema({
-    userId: mongoose.Schema.types.Objectid,
+    userId: mongoose.Schema.Types.ObjectId,
     name: String,
     repeat: {
         option: Number,

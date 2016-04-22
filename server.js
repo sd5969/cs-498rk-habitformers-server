@@ -1,8 +1,8 @@
 // Get the packages we need
 var express = require('express');
 var mongoose = require('mongoose');
-// var User = require('./models/user');
-// var Habit = require('./models/habit');
+var User = require('./models/user');
+var Habit = require('./models/habit');
 var bodyParser = require('body-parser');
 var router = express.Router();
 
@@ -70,3 +70,6 @@ homeRoute.get(function(req, res) {
 		data : []
 	});
 });
+
+app.listen(port);
+console.log('Server running on port ' + port);
