@@ -5,7 +5,6 @@ var User = require('./models/user');
 var Habit = require('./models/habit');
 var bodyParser = require('body-parser');
 var router = express.Router();
-
 //adding passport stuff
 var passport = require('passport');
 var passportLocal = require('passport-local')
@@ -20,17 +19,6 @@ var app = express();
 // Use environment defined port or 4000
 var port = process.env.PORT || 4000;
 
-/*
-
-//Allow CORS so that backend and frontend could pe put on different servers
-var allowCrossDomain = function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept");
-	next();
-};
-app.use(allowCrossDomain);
-
-*/
 
 // Use the body-parser package in our application
 app.use(bodyParser.urlencoded({
@@ -60,10 +48,25 @@ else {
 }
 };
 app.use(allowCrossDomain);
+
 //User auth stuff will clean up later
+require('./config/passport')(passport);
+
+app.use(morgan('dev'));
 app.use(cookieParser());
+app.use(bodyParser());
+
+app.use(session({ secret: 'passport demo' }));
+// app.use(express.static(__dirname + '/frontend'));
+
+
 app.use(passport.initialize());
 app.use(passport.session());
+// require('./app/routes.js')(app, passport);
+
+/*
+ROUTES
+*/
 // All our routes will start with /api
 app.use('/api', router);
 
