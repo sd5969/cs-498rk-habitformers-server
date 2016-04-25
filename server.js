@@ -155,9 +155,9 @@ habitsRoute.post(function(req, res) {
 	var name = req.body.name;
 	var userId = req.body.userId ? req.body.userId : "";
 	var repeat = {
-		option: req.body.option ? req.body.option : 0,
-		days: req.body.days ? req.body.days : [],
-		interval: req.body.interval ? req.body.interval : 1
+		option: req.body.repeat.option ? req.body.repeat.option : 0,
+		days: req.body.repeat.days ? req.body.repeat.days : [],
+		interval: req.body.repeat.interval ? req.body.repeat.interval : 1
 	};
 	var complete_days = req.body.complete_days ? req.body.complete_days : []; // {date, completed}
 	var start_date = req.body.start_date ? req.body.start_date : "";
@@ -325,9 +325,9 @@ habitRoute.put(function(req, res) {
 			habit.name = req.body.name ? req.body.name : '';
 			habit.userId = req.body.userId ? req.body.userId : '';
 			habit.repeat = {
-				option: req.body.option ? req.body.option : 0,
-				days: req.body.days ? req.body.days : [],
-				interval: req.body.interval ? req.body.interval : 1
+				option: req.body.repeat.option ? req.body.repeat.option : 0,
+				days: req.body.repeat.days ? req.body.repeat.days : [],
+				interval: req.body.repeat.interval ? req.body.repeat.interval : 1
 			};
 			habit.complete_days = req.body.complete_days ? req.body.complete_days : []; // {date, completed}
 			habit.start_date = req.body.start_date ? req.body.start_date : "";

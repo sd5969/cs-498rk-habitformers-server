@@ -4,7 +4,7 @@ var HabitSchema = new mongoose.Schema({
     userId: mongoose.Schema.Types.ObjectId,
     name: {type: String, required: [true, 'You must enter a name']},
     repeat: {
-        option: Number,
+        option: Number, // 0 is repeat x number of days, 1 is repeat x number of weeks
         days: [Number],
         interval: Number
     },
